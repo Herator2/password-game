@@ -1,5 +1,5 @@
 # About
-A semi clone of the https://neal.fun/ password game. Some rules are different to the original and some rules are completely unique. This is a small hobby project.
+A semi clone of the https://neal.fun/ password game. Some rules are different to the original and some rules are completely unique. This is just a small hobby project.
 
 ## Dependencies
  - requests
