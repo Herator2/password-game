@@ -1,5 +1,6 @@
 # Basic rules present in most NORMAL password checkers
 
+
 # First rule
 def initial(i, password):
     # Check if blank
@@ -8,6 +9,7 @@ def initial(i, password):
         return False
     return True
 
+
 # Include a number
 def number(i, password):
     # Check if a number is in the password
@@ -15,8 +17,9 @@ def number(i, password):
         if str(n) in password:
             return True  # Passed
     # Did not pass
-    print("Rule "+str(i)+": Password must include a number.")
+    print("Rule " + str(i) + ": Password must include a number.")
     return False
+
 
 # Include a symbol
 def symbol(i, password):
@@ -25,8 +28,9 @@ def symbol(i, password):
         if c in password:
             return True  # Passed
     # Did not pass
-    print("Rule "+str(i)+": Password must include a symbol.")
+    print("Rule " + str(i) + ": Password must include a symbol.")
     return False
+
 
 # Greater than 5 characters
 def length(i, password):
@@ -34,8 +38,9 @@ def length(i, password):
     if len(password) >= 5:
         return True  # Passed
     # Did not pass
-    print("Rule "+str(i)+": Password must include 5 or more characters.")
+    print("Rule " + str(i) + ": Password must include 5 or more characters.")
     return False
+
 
 # Includes a capital letter
 def capital(i, password):
@@ -45,5 +50,5 @@ def capital(i, password):
             if c == c.upper():
                 return True
     # Did not pass
-    print("Rule "+str(i)+": Password must include a capital letter.")
+    print("Rule " + str(i) + ": Password must include a capital letter.")
     return False

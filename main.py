@@ -3,7 +3,7 @@ import os  # OS used to clear screen
 
 
 # Only tested on linux: https://stackoverflow.com/questions/2533120/show-default-value-for-editing-on-python-input-possible
-def rlinput(prompt, prefill=''):
+def rlinput(prompt, prefill=""):
     readline.set_startup_hook(lambda: readline.insert_text(prefill))
     try:
         return input(prompt)  # or raw_input in Python 2
@@ -37,7 +37,7 @@ rules = [
     colors.multiplesecondary,
     history.date,
     geography.capital,
-    stupid.phonetic
+    stupid.phonetic,
 ]
 
 # Setup other persistent variables
@@ -65,13 +65,12 @@ while True:
     if not rule_failed:
         print("Password is viable.\n - In other words, you won!")
         break
-    
+
     # Print spacer or hint
     if password == "":
         print("  HINT -> Hit enter to check typed password")
     else:
         print()
-    
+
     # Ask user for password to check with a prefill of the last password
     password = rlinput(" >>> ", password)
-

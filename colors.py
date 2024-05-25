@@ -1,7 +1,10 @@
 # A couple different color based ones
 import random
 
-color_choice = random.choice(["FF0000", "00FF00", "0000FF", "FFFF00", "00FFFF", "FF00FF"]) # Red Green Blue Yellow Cyan Magenta
+color_choice = random.choice(
+    ["FF0000", "00FF00", "0000FF", "FFFF00", "00FFFF", "FF00FF"]
+)  # Red Green Blue Yellow Cyan Magenta
+
 
 # Must contain only two primary colors
 def primary(i, password):
@@ -15,12 +18,25 @@ def primary(i, password):
         return True
     # Did not pass
     if x == 1:
-        print("Rule "+str(i)+": Password must include one more primary color (Science/Computing based primary colors).")
+        print(
+            "Rule "
+            + str(i)
+            + ": Password must include one more primary color (Science/Computing based primary colors)."
+        )
     elif x > 2:
-        print("Rule "+str(i)+": Password must include only two primary colors (Science/Computing based primary colors).")
+        print(
+            "Rule "
+            + str(i)
+            + ": Password must include only two primary colors (Science/Computing based primary colors)."
+        )
     else:
-        print("Rule "+str(i)+": Password must include two primary colors (Science/Computing based primary colors).")
+        print(
+            "Rule "
+            + str(i)
+            + ": Password must include two primary colors (Science/Computing based primary colors)."
+        )
     return False
+
 
 # Must contain the mix of the two primary colors
 def secondary(i, password):
@@ -43,22 +59,37 @@ def secondary(i, password):
         if y in password.lower():
             return True
     # Did not pass
-    print("Rule "+str(i)+": Password must include the mixture of your two primary colors.")
+    print(
+        "Rule "
+        + str(i)
+        + ": Password must include the mixture of your two primary colors."
+    )
     return False
+
 
 # Must only contain a single secondary color
 def multiplesecondary(i, password):
     # Count up each color
     t = 0
-    for c in ["magenta", "purple", "pink", "lilac", "violet", "yellow", "cyan", "turquoise"]:
+    for c in [
+        "magenta",
+        "purple",
+        "pink",
+        "lilac",
+        "violet",
+        "yellow",
+        "cyan",
+        "turquoise",
+    ]:
         if c in password.lower():
             t += 1
     # Test if there is less than or equal to 1 in total
     if t <= 1:
         return True
     # Did not pass
-    print("Rule "+str(i)+": Password must only contain a single secondary color.")
+    print("Rule " + str(i) + ": Password must only contain a single secondary color.")
     return False
+
 
 # Must contain this color in text
 def hextotext(i, password):
@@ -81,5 +112,11 @@ def hextotext(i, password):
         if color in password.lower():
             return True
     # Did not pass
-    print("Rule "+str(i)+": Password must include the name of the color #"+color_choice+" (That is hexadecimal rgb).")
+    print(
+        "Rule "
+        + str(i)
+        + ": Password must include the name of the color #"
+        + color_choice
+        + " (That is hexadecimal rgb)."
+    )
     return False

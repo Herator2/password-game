@@ -29,7 +29,7 @@ phonetic_morse = [
     ".-- .... .. ... -.- . -.--",
     "-..- .-. .- -.--",
     "-.-- .- -. -.- . .",
-    "--.. ..- .-.. ..-"
+    "--.. ..- .-.. ..-",
 ]
 
 
@@ -40,9 +40,9 @@ def phonetic(i, password):
         if s in password:
             return True
     # Did not pass
-    print("Rule "+str(i)+": Password must contain a letter from the phonetic alphabet in morse code.")
+    print(
+        "Rule "
+        + str(i)
+        + ": Password must contain a letter from the phonetic alphabet in morse code."
+    )
     return False
-
-
-
-
