@@ -2,11 +2,13 @@
 import random
 
 # Generate random values
+print("Calculating numbers...")
 addition_goal = (
     random.randint(1, 20) + 4 + 18 + 2 + 27
 )  # 4+18 for binary and hex. 2 for prime. 27 for history date
 binary_goal = bin(random.randint(0, 15))[2:]
 hex_goal = hex(random.randint(0, 255))[2:]
+numeral_goal = random.randint(3, 49)
 
 
 # Numbers must add to random number + other required numbers
@@ -74,17 +76,62 @@ def hexadecimal(i, password):
     return False
 
 
-# Contains a roman numeral
+# Contain a random roman numeral
 def numeral(i, password):
-    # Check each character
+    # Check each character for a start to roman numerals
     for c in password:
         if c in "IVXLCDM":
-            return True
+            # Setup first element of the numeral
+            numeral = c
+            # Setup current value
+            x = password.index(c)
+            # Test next term
+            while True:
+                # At last character in password
+                if x == len(password) - 1:
+                    print("END OF SEQUENCE")
+                    break
+                # Increment pointer / Current value
+                x += 1
+                # Test if pointer is on a roman numeral
+                if password[x] in "IVXLCDM":
+                    # Add to main numeral and go to top of loop
+                    numeral = numeral + password[x]
+                    print("ADD:", password[x])
+                    continue
+                # Not a numeral -> Break out of loop
+                print("NOT NUMERAL:", password[x])
+                break
+            # Translate into numbers
+            value_map = {
+                "I": 1,
+                "V": 5,
+                "X": 10,
+                "L": 50,
+                "C": 100,
+                "D": 500,
+                "M": 1000,
+            }
+            value = 0
+            last_digit_value = 0
+            print("TRANSLATING:", numeral)
+            # Translation algorithm
+            for roman_digit in numeral[::-1]:
+                digit_value = value_map[roman_digit]
+                if digit_value >= last_digit_value:
+                    value += digit_value
+                    last_digit_value = digit_value
+                else:
+                    value -= digit_value
+            # Test if value matches
+            if value == numeral_goal:
+                return True
     # Did not pass
-    print("Rule " + str(i) + ": Password must contain a roman numeral.")
+    print(
+        "Rule "
+        + str(i)
+        + ": Password must contain the roman numerals for "
+        + str(numeral_goal)
+        + "."
+    )
     return False
-
-
-# TODO Roman numerals must multiply to x
-def multiply(i, password):
-    pass

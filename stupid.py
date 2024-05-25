@@ -1,7 +1,6 @@
 # Random collection of stupid rules
 import random
 import requests  # Used to get wordle data from nytimes
-import json  # Used to parse json data for wordle
 from datetime import datetime  # Used to get the date for the wordle answer
 
 # Generate random persistent values
