@@ -1,5 +1,6 @@
 import readline  # Readline module required to use input prefill
 import os  # OS used to clear screen
+import time  # Time startup time
 
 
 # Only tested on linux: https://stackoverflow.com/questions/2533120/show-default-value-for-editing-on-python-input-possible
@@ -11,6 +12,10 @@ def rlinput(prompt, prefill=""):
         readline.set_startup_hook()
 
 
+# Debug print and start import timer
+start_time = time.time()
+print("Importing Modules...")
+
 # Import rule modules
 import basic
 import numerals
@@ -19,17 +24,25 @@ import history
 import geography
 import stupid
 
+# Debug print
+end_time = time.time()
+elapsed_time = (end_time - start_time) * 1000
+print("Done in " + str(round(elapsed_time)) + "ms!")
+
+quit()
+
 # Main rules
 rules = [
     basic.initial,
+    stupid.wordle,
     basic.length,
     basic.capital,
     basic.number,
     basic.symbol,
-    numerals.prime,
-    numerals.numeral,
-    colors.primary,
     numerals.addition,
+    numerals.prime,
+    # numerals.numeral,
+    colors.primary,
     numerals.binary,
     colors.secondary,
     numerals.hexadecimal,
@@ -38,6 +51,7 @@ rules = [
     history.date,
     geography.capital,
     stupid.phonetic,
+    geography.continent,
 ]
 
 # Setup other persistent variables
@@ -63,7 +77,7 @@ while True:
 
     # Determine if all rules had passed
     if not rule_failed:
-        print("Password is viable.\n - In other words, you won!")
+        print("Password is viable.")
         break
 
     # Print spacer or hint
@@ -74,3 +88,10 @@ while True:
 
     # Ask user for password to check with a prefill of the last password
     password = rlinput(" >>> ", password)
+
+# For the lols
+x = 0
+while True:
+    # Ask for password
+    print("For security reasons, please reenter your password")
+    x = rlinput(" >>> ", x)

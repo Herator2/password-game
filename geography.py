@@ -33,3 +33,23 @@ def capital(i, password):
         + "."
     )
     return False
+
+
+# Include a continent
+def continent(i, password):
+    # Check if password includes one of the continents (With a couple extras to avoid confusion)
+    for x in [
+        "europe",
+        "america",
+        "africa",
+        "asia",
+        "antarctica",
+        "oceania",
+        "australia",
+        "australasia",
+    ]:
+        if x in password.lower():
+            return True
+    # Did not pass
+    print("Rule " + str(i) + ": Password must contain a continent.")
+    return False

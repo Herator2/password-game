@@ -99,7 +99,7 @@ def hextotext(i, password):
         choices = ["red"]
     elif color_choice == "00FF00":
         choices = ["green"]
-    elif color_choice == "00FF00":
+    elif color_choice == "0000FF":
         choices = ["blue"]
     elif color_choice == "FFFF00":
         choices = ["yellow"]
