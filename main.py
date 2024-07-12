@@ -1,20 +1,27 @@
 import readline  # Readline module required to use input prefill
 import os  # OS used to clear screen
-import time  # Time startup time
-
+from sys import platform  # Test operating system
 
 # Only tested on linux: https://stackoverflow.com/questions/2533120/show-default-value-for-editing-on-python-input-possible
 def rlinput(prompt, prefill=""):
-	readline.set_startup_hook(lambda: readline.insert_text(prefill))
-	try:
-		return input(prompt)  # or raw_input in Python 2
-	finally:
-		readline.set_startup_hook()
+	# Check for linux
+	if platform == "linux" or platform == "linux2":
+		readline.set_startup_hook(lambda: readline.insert_text(prefill))
+		try:
+			return input(prompt)  # or raw_input in Python 2
+		finally:
+			readline.set_startup_hook()
+	# Basic input without prefill
+	return input(prompt)
 
-
-# Debug print and start import timer
-start_time = time.time()
-print("Importing Modules...")
+# Clear screen using a command
+def clear():
+	# Windows
+	if platform == "win32":
+		os.system("cls")
+	# Linux / Mac
+	else:
+		os.system("clear")
 
 # Import rule modules
 import basic
@@ -25,14 +32,8 @@ import history
 import geography
 import stupid
 
-# Debug print
-end_time = time.time()
-elapsed_time = (end_time - start_time) * 1000
-print("Done in " + str(round(elapsed_time)) + "ms!")
-
 # Main rules
 rules = [
-	english.palindrome,
 	basic.initial,
 	basic.length,
 	basic.capital,
@@ -40,7 +41,6 @@ rules = [
 	basic.symbol,
 	numerals.addition,
 	numerals.prime,
-	# numerals.numeral,
 	colors.primary,
 	numerals.binary,
 	english.palindrome,
@@ -61,7 +61,7 @@ password = ""
 # Main gameplay loop
 while True:
 	# Clear screen
-	os.system("clear")
+	clear()
 
 	# Check each rule
 	rule_failed = False
